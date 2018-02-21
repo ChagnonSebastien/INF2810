@@ -25,7 +25,7 @@ public class Graph {
 	}
 	
 	public void createRoad(int length, int[] endCities) {
-		
+		this.roads[this.roads.length] = new Road(length, new City[]{this.getCity(endCities[0]), this.getCity(endCities[1])});
 	}
 	
 	public City getCity(int id) {
