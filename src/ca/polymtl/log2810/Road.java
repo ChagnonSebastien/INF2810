@@ -6,16 +6,9 @@ public class Road {
 	
 	private City[] endCities;
 
-	public Road(int length) {
+	public Road(int length, City[] endCities) {
 		this.length = length;
-	}
-	
-	public City[] addCity(City city) throws IndexOutOfBoundsException {
-		if (this.endCities.length >= 2)
-			throw new IndexOutOfBoundsException("This road already has two end cities.");
-		
-		this.endCities[this.endCities.length] = city;
-		return this.endCities;
+		this.endCities = endCities;
 	}
 	
 	public int getLength() {
