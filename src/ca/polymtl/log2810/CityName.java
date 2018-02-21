@@ -22,11 +22,19 @@ public enum CityName {
 	WHITEHORSE(19, "Whitehorse"),
 	YELLOWKNIFE(20, "Yellowknife");
 	
-	private int id;
-	private String name;
+	public int id;
+	public String name;
 	
 	CityName(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+	
+	public static CityName getCityById(int id) throws ArrayIndexOutOfBoundsException {
+		for (CityName city : CityName.values())
+			if (city.id == id)
+				return city;
+		
+		throw new ArrayIndexOutOfBoundsException("This city is not registered.");
 	}
 }
