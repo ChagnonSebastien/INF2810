@@ -17,11 +17,11 @@ public class Graph {
 		return roads;
 	}
 	
-	public void createCity(int id, boolean gazStation) throws Exception {
+	public void createCity(int id, int gazStation) throws Exception {
 		if (this.getCity(id) != null)
 			throw new Exception("A city with this id already exists.");
 		
-		this.cities[this.roads.length] = new City(id, gazStation);
+		this.cities[this.roads.length] = new City(id, gazStation > 0);
 	}
 	
 	public void createRoad(int length, int[] endCities) {
