@@ -27,4 +27,8 @@ public class City {
 	public int getID() {
 		return this.id;
 	}
+	
+	public String toString() {
+		return "City (id: " + this.id + ", name: " + this.name + ")";
+	}
 }

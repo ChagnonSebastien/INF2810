@@ -1,20 +1,24 @@
 package ca.polymtl.log2810;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Road {
 		
 	private int length;
 	
-	private City[] endCities;
+	private List<City> endCities;
 
 	public Road(int length) {
+		this.endCities = new ArrayList<City>();
 		this.length = length;
 	}
 	
-	public City[] addCity(City city) throws IndexOutOfBoundsException {
-		if (this.endCities.length >= 2)
+	public List<City> addCity(City city) throws IndexOutOfBoundsException {
+		if (this.endCities.size() >= 2)
 			throw new IndexOutOfBoundsException("This road already has two end cities.");
 		
-		this.endCities[this.endCities.length] = city;
+		this.endCities.add(city);
 		return this.endCities;
 	}
 	
@@ -22,7 +26,11 @@ public class Road {
 		return this.length;
 	}
 	
-	public City[] getEndCities() {
+	public List<City> getEndCities() {
 		return this.endCities;
+	}
+	
+	public String toString() {
+		return "Road (ends: " + this.endCities.toString() + ", length: " + this.length + ")";
 	}
 }

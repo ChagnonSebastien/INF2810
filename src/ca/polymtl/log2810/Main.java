@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		try {
-			GraphCreater.createGraph(new File("villes.txt"));
+			System.out.println(GraphCreater.createGraph(new File("villes.txt")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

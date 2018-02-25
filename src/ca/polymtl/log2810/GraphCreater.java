@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GraphCreater {
@@ -27,6 +26,7 @@ public class GraphCreater {
 					mode = ReadMode.EDGE;
 					continue;
 				}
+				
 				List<Integer> args;
 				
 				try {
@@ -35,8 +35,7 @@ public class GraphCreater {
 					System.out.printf("WARNING: Can't parse int in line: %n. Line ignored.\n", line);
 					continue;
 				}
-					
-					
+				
 				switch (mode) {
 				case VERTICE:
 					try {
@@ -47,23 +46,14 @@ public class GraphCreater {
 					break;
 					
 				case EDGE:
-					graph.createRoad(args.get(0), args.subList(1, 2));
+					graph.createRoad(args.get(2), args.subList(0, 2));
 					break;
 				}
-				
 			}
-			
-			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		do {
-			
-		} while (false);
 		
 		return graph;
 	}
