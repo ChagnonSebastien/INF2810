@@ -2,7 +2,6 @@ package ca.polymtl.log2810;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,46 +13,43 @@ public class GraphCreater {
 		VERTICE, EDGE
 	}
 
-	public static Graph createGraph(File file) throws FileNotFoundException {
+	public static Graph createGraph(File file) throws IOException {
 		Graph graph = new Graph();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		ReadMode mode = ReadMode.VERTICE;
 		
-		try {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				if (line.length() == 0) {
-					mode = ReadMode.EDGE;
-					continue;
-				}
-				
-				List<Integer> args;
-				
-				try {
-					args = GraphCreater.parseArgs(line);
-				} catch (NumberFormatException e) {
-					System.out.printf("WARNING: Can't parse int in line: %n. Line ignored.\n", line);
-					continue;
-				}
-				
-				switch (mode) {
-				case VERTICE:
-					try {
-						graph.createCity(args.get(0), args.get(1));
-					} catch (Exception e) {
-						System.out.printf("WARNING: Two cities in the file selected have the same id: %n. Second one ignored.\n", args.get(0));
-					}
-					break;
-					
-				case EDGE:
-					graph.createRoad(args.get(2), args.subList(0, 2));
-					break;
-				}
+		String line;
+		while ((line = reader.readLine()) != null) {
+			if (line.length() == 0) {
+				mode = ReadMode.EDGE;
+				continue;
 			}
 			
-		} catch (IOException e) {
-			e.printStackTrace();
+			List<Integer> args;
+			
+			try {
+				args = GraphCreater.parseArgs(line);
+			} catch (NumberFormatException e) {
+				System.out.printf("WARNING: Can't parse int in line: %n. Line ignored.\n", line);
+				continue;
+			}
+			
+			switch (mode) {
+			case VERTICE:
+				try {
+					graph.createCity(args.get(0), args.get(1));
+				} catch (Exception e) {
+					System.out.printf("WARNING: Two cities in the file selected have the same id: %n. Second one ignored.\n", args.get(0));
+				}
+				break;
+				
+			case EDGE:
+				graph.createRoad(args.get(2), args.subList(0, 2));
+				break;
+			}
 		}
+		
+		reader.close();
 		
 		return graph;
 	}

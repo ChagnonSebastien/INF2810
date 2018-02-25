@@ -18,6 +18,7 @@ public class Road {
 		if (this.endCities.size() >= 2)
 			throw new IndexOutOfBoundsException("This road already has two end cities.");
 		
+		city.addRoad(this);
 		this.endCities.add(city);
 		return this.endCities;
 	}

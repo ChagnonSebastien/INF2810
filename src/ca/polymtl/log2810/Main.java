@@ -1,7 +1,7 @@
 package ca.polymtl.log2810;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +12,7 @@ public class Main {
 		
 		try {
 			System.out.println(GraphCreater.createGraph(new File("villes.txt")));
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
