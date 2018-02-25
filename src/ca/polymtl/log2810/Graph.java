@@ -1,19 +1,21 @@
 package ca.polymtl.log2810;
 
+import java.util.List;
+
 public class Graph {
 
-	private City[] cities;
-	private Road[] roads;
+	private List<City> cities;
+	private List<Road> roads;
 	
 	public Graph() {
 		
 	}
 	
-	public City[] getCities() {
+	public List<City> getCities() {
 		return this.cities;
 	}
 	
-	public Road[] getRoads() {
+	public List<Road> getRoads() {
 		return roads;
 	}
 	
@@ -21,11 +23,16 @@ public class Graph {
 		if (this.getCity(id) != null)
 			throw new Exception("A city with this id already exists.");
 		
-		this.cities[this.roads.length] = new City(id, gazStation > 0);
+		this.cities.add(new City(id, gazStation > 0));
 	}
 	
-	public void createRoad(int length, int[] endCities) {
-		this.roads[this.roads.length] = new Road(length, new City[]{this.getCity(endCities[0]), this.getCity(endCities[1])});
+	public void createRoad(Integer length, List<Integer> cityIds) {
+		Road road = new Road(length, null);
+		
+		for (Integer id : cityIds)
+			;
+		
+		this.roads.add(road);
 	}
 	
 	public City getCity(int id) {
