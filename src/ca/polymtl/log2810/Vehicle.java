@@ -1,7 +1,7 @@
 package ca.polymtl.log2810;
 
-public enum Vehicules{
-	VOITURE(),
+public enum Vehicle{
+	CAR(),
 	PICK_UP(),
-	FOURGON();
+	VAN();
 }
