@@ -14,11 +14,7 @@ public class Graph {
 	}
 
 	public List<City> getCities() {
-		return this.cities;
-	}
-
-	public List<Road> getRoads() {
-		return roads;
+		return cities;
 	}
 
 	public void createCity(int id, int gazStation) throws Exception {

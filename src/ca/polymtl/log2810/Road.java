@@ -27,11 +27,17 @@ public class Road {
 		return this.length;
 	}
 	
-	public List<City> getEndCities() {
-		return this.endCities;
-	}
-	
 	public String toString() {
 		return "Road (ends: " + this.endCities.toString() + ", length: " + this.length + ")";
+	}
+
+	public City getOtherEnd(City city) throws CityIsNotOnRoadException {
+		int index = endCities.indexOf(city);
+		if (index == -1) throw new CityIsNotOnRoadException();
+		return endCities.get(index == 0 ? 1 : 0);
+	}
+	
+	public class CityIsNotOnRoadException extends Exception {
+		private static final long serialVersionUID = 2373344479349407721L;
 	}
 }
