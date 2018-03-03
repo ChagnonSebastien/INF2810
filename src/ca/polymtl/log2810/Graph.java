@@ -50,4 +50,8 @@ public class Graph {
 		builder.append(")");
 		return builder.toString();
 	}
+
+	public List<Road> getRoads() {
+		return roads;
+	}
 }
